@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    p Welcome to users
+
+    table
+        thead
+            tr
+                th Name
+                th EMail
+        tbody
+            each val in users
+                tr
+                    td=val.name
+                    td=val.email
+
+
+
+
+
+

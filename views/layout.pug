@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(type='text/css', rel='stylesheet', href='/stylesheets/materialize.css', media='screen,projection')
+    title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  body
+    script(type='text/javascript', src='/javascripts/materialize.js')
+
+    div
+        nav
+            div.nav-wrapper.teal.darken-2
+                a.brand-logo(href='#') SYS
+                ul.right.hide-on-med-and-down(id='nav-mobile')
+                    li
+                        a(href='/users/addUser') Add User
+                    li
+                        a(href='/users/getAll') View Users
+    block content
