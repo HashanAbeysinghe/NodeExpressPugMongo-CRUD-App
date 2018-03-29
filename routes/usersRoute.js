@@ -35,10 +35,51 @@ router.post('/addUser', (req,res,next)=>{
   user.save((err)=>{
     if(err){
       console.log(err);
-      return;
+      if(err.message.includes('duplicate key error'))
+        res.render('addUser', {message:'Email already exist'});
+      else
+        res.render('addUser', {message:'error'});
     }
     else{
       res.redirect('/');
+    }
+  });
+});
+
+
+router.get('/editUser/:email', (req,res,next)=>{
+  User.findOne({email:req.params.email}, (err, user) =>{
+    if(err){
+      console.log(err);
+      res.render('users',{message:'Error'});
+    }
+    else{
+      res.render('editUser', {user:user});
+    }
+  });
+});
+
+
+router.post('/editUser/:email', (req,res,next)=>{
+  User.findOneAndUpdate({email:req.params.email}, {$set:{name:req.body.name}},{new:true},(err,user)=>{
+    if (err) {
+        console.log(err);
+        res.render('editUser', {message:'Error'});
+    }
+    else{
+        res.redirect('/users/getAll');
+    }
+  });
+});
+
+router.get('/deleteUser/:email', (req,res,next)=>{
+  User.findOneAndRemove({email:req.params.email},(err,user)=>{
+    if(err){
+        console.log(err);
+        res.render('editUser', {message:'Error'});
+    }
+    else{
+        res.redirect('/users/getAll');
     }
   });
 });

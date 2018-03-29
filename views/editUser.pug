@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h2 Edit User
+    if message
+        div.row
+            div.card-panel.red.darken-1 #{message}
+
+    div.row
+        form.col.s12(method='POST', action='/users/editUser/'+user.email)
+            div.row
+                div.input-field.s6
+                    input.validate(placeholder='Name',id='name',name='name', type='text', value=user.name)
+                    label(for='name') Name
+                div.input-field.s6
+                    input.validate(placeholder='Email',id='email',name='email', type='text', value=user.email)
+                    label(for='email') EMail
+            div.row
+                div.s12
+                    button.btn.waves-effect.waves-light(type='submit',name='action') Save
+
+

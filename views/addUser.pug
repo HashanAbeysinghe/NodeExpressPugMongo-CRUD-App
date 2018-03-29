@@ -2,6 +2,9 @@ extends layout
 
 block content
     h2 Add User
+    if message
+        div.row
+            div.card-panel.red.darken-1 #{message}
 
     div.row
         form.col.s12(method='POST', action='/users/addUser')
