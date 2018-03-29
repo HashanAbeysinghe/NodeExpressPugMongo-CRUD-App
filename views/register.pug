@@ -1,13 +1,13 @@
 extends layout
 
 block content
-    h2 Add User
+    h2 Register
     if message
         div.row
             div.card-panel.red.darken-1 #{message}
 
     div.row
-        form.col.s12(method='POST', action='/users/addUser')
+        form.col.s12(method='POST', action='/users/register')
             div.row
                 div.input-field.s6
                     input.validate(placeholder='Name',id='name',name='name', type='text')
@@ -15,6 +15,9 @@ block content
                 div.input-field.s6
                     input.validate(placeholder='Email',id='email',name='email', type='text')
                     label(for='email') EMail
+                div.input-field.s6
+                    input.validate(placeholder='Email',id='password',name='password', type='password')
+                    label(for='email') Password
             div.row
                 div.s12
                     button.btn.waves-effect.waves-light(type='submit',name='action') Submit

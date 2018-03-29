@@ -13,8 +13,18 @@ html
             div.nav-wrapper.teal.darken-2
                 a.brand-logo(href='#') SYS
                 ul.right.hide-on-med-and-down(id='nav-mobile')
-                    li
-                        a(href='/users/addUser') Add User
-                    li
-                        a(href='/users/getAll') View Users
+                    if user
+                        li
+                            a(href='/users/logout') Logout
+                        li
+                            a(href='/users/getAll') View Users
+                    else
+                        li
+                            a(href='/users/login') Login
+                        li
+                            a(href='/users/register') Register
+
+
+
+
     block content
